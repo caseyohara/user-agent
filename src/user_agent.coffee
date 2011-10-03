@@ -1,6 +1,8 @@
 class UserAgent
 
   Versions =
+    Firefox       : /firefox\/([\d\w\.\-]+)/i
+    IE            : /msie\s([\d\.]+[\d])/i
     Chrome        : /chrome\/([\d\w\.\-]+)/i
     Safari        : /version\/([\d\w\.\-]+)/i
     Ps3           : /([\d\w\.\-]+)\)\s*$/i
@@ -69,6 +71,10 @@ class UserAgent
         RegExp.$1 if Versions.Chrome.test string
       when 'safari'
         RegExp.$1 if Versions.Safari.test string
+      when 'firefox'
+        RegExp.$1 if Versions.Firefox.test string
+      when 'ie'
+        RegExp.$1 if Versions.IE.test string        
       when 'ps3'
         RegExp.$1 if Versions.Ps3.test string
       when 'psp'
